@@ -80,3 +80,7 @@ jobs:
         with:
           name: docs-build
           path: .vitepress/dist
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .vitepress/dist
