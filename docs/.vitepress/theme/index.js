@@ -10,6 +10,9 @@ export default {
         models: [
           {
             path: '/live2d/ariu/ariu.model3.json'
+          },
+          {
+            path: '/live2d/wanko/runtime/wanko_touch.model3.json'
           }
         ]
       });
