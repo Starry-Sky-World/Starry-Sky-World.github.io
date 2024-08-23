@@ -1,0 +1,10 @@
+{
+    "Type": "Live2D Expression",
+    "Parameters": [
+        {
+            "Id": "quinzi",
+            "Value": 0.0,
+            "Blend": "Add"
+        }
+    ]
+}

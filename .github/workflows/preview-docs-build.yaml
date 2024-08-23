@@ -49,27 +49,33 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 22.x
+          cache: npm
 
-      - name: 安装 pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          run_install: false
+      # - name: 安装 pnpm
+      #   uses: pnpm/action-setup@v2
+      #   with:
+      #     run_install: false
 
       - name: 获取 pnpm store 目录
         shell: bash
         run: |
           echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-      - name: 配置 pnpm 缓存
-        uses: actions/cache@v4
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+      #- name: 配置 pnpm 缓存
+      #  uses: actions/cache@v4
+      #  with:
+      #    path: ${{ env.STORE_PATH }}
+      #    key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+      #    restore-keys: |
+      #      ${{ runner.os }}-pnpm-store-
+      
 
       - name: 安装依赖
-        run: pnpm install --frozen-lockfile
+        run: |
+          npm ci
+          npm install
+          npm install -D vitepress
+          npm install oh-my-live2d@latest
 
       - name: 安装思源黑体
         run: |
@@ -78,17 +84,17 @@ jobs:
 
       - name: 构建
         run: |
-          pnpm docs:build
+          npm run docs:build
 
       - name: 上传构建产物
         uses: actions/upload-artifact@v4
         with:
           name: docs-build
-          path: .vitepress/dist
+          path: docs/.vitepress/dist
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .vitepress/dist
+          path: docs/.vitepress/dist
   deploy:
             environment:
               name: github-pages
