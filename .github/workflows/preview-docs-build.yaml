@@ -77,10 +77,10 @@ jobs:
           npm install -D vitepress
           npm install oh-my-live2d@latest
 
-      - name: 安装思源黑体
-        run: |
-          mkdir -p ~/.local/share/fonts
-          cp public/source-han-sans.ttf ~/.local/share/fonts/source-han-sans.ttf
+      # - name: 安装思源黑体
+      #   run: |
+      #     mkdir -p ~/.local/share/fonts
+      #     cp public/source-han-sans.ttf ~/.local/share/fonts/source-han-sans.ttf
 
       - name: 构建
         run: |
