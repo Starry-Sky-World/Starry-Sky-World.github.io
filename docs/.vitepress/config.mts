@@ -12,19 +12,33 @@ export default defineConfig({
       { text: '项目', items:[
         { text: '项目', link: '/projects/index.md'},
         { text: 'FinallShell', link: '/projects/FinallShell.md'},
+        { text: 'StarryClient', link: '/projects/StarryClient.md'}
       ]}
     ],
 
-    sidebar: {"/projects/":
-      [
+    sidebar:{
+      "/projects/":[
         {
           text: '项目',
           link: '/projects/index.md',
           items: [
-            { text: 'FinallShell密钥生成', link: '/projects/FinallShell.md' }
+            { text: 'FinallShell密钥生成', link: '/projects/FinallShell.md' },
+            { text: '[MC作弊]StarryClient', link: '/projects/StarryClient.md'}
+          ]
+        },
+      ],
+      "/minecraft/":[
+        {
+          text: 'Creative Minecraft',
+          link: '/minecraft/index.md',
+          items: [
+            {
+              text: 'Server',
+              link: '/minecraft/server/index.md'
+            }
           ]
         }
-      ],
+      ]
     },
 
     socialLinks: [
