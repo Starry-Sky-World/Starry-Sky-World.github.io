@@ -1,0 +1,32 @@
+name: Label New Issues
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  add-label:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Create or add label
+        run: |
+          LABEL_NAME="等待处理"
+          LABEL_COLOR="ff0000"  # You can change the color code as needed
+          
+          # Create the label if it doesn't exist
+          if ! gh label list | grep -q "$LABEL_NAME"; then
+            gh label create "$LABEL_NAME" --color "$LABEL_COLOR" --description "Issues awaiting processing"
+          fi
+
+          # Add the label to the issue
+          gh issue edit ${{ github.event.issue.number }} --add-label "$LABEL_NAME"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
