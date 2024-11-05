@@ -1,4 +1,8 @@
 name: Label New Issues
+permissions:
+  issues: write  # 添加 issues 权限
+  contents: write
+
 on:
   issues:
     types: [opened]
