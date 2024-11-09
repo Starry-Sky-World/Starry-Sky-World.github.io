@@ -23,7 +23,8 @@ export default defineConfig({
           link: '/projects/index.md',
           items: [
             { text: 'FinallShell密钥生成', link: '/projects/FinallShell.md' },
-            { text: '[MC作弊]StarryClient', link: '/projects/StarryClient.md'}
+            { text: '[MC作弊]StarryClient', link: '/projects/StarryClient.md'},
+            { text: 'BPB Panel', link: '/projects/BPB.md'}
           ]
         },
       ],
